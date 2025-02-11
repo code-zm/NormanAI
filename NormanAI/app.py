@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, Response
 from ollama import Client
-import markdown
 
 app = Flask(__name__)
 client = Client(host="http://192.168.1.138:11434")
@@ -19,18 +18,33 @@ def stream_response(user_input):
             prompt=f"Transform the following user request into a single-paragraph mini SRS:\n\n{user_input}",
             stream=True
         )
-
+        srs_output= ""
         for chunk in response_generator_srs:
+            srs_output += chunk['response']
             yield chunk['response']
 
         yield "[SRS_END]\n"  # Mark the end of Mini SRS
+
+        yield "[PLAN_START]\n"
+
+        response_generator_plan = client.generate(
+            model="phi4-planner",
+            prompt=f"Below is a detailed description of a software project. Please transform this paragraph into a comprehensive, step-by-step implementation plan that includes requirements analysis, environment setup, architectural design, detailed coding steps, testing/debugging strategies, and suggestions for documentation and future enhancements.\n\n{srs_output}",
+            stream=True
+            )
+        plan_output=""
+        for chunk in response_generator_plan:
+            plan_output += chunk['response']
+            yield chunk['response']
+
+        yield "[PLAN_END]\n"
 
         # Signal the start of Generated Code
         yield "[CODE_START]\n"
 
         response_generator_code = client.generate(
             model="deepseek-dev",
-            prompt=f"Generate fully working code based on the following software specification:\n\n{user_input}",
+            prompt=f"Generate fully working code based on the following software implementation plan:\n\n{plan_output}",
             stream=True
         )
 

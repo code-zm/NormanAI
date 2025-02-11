@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("srs-form");
     const userInput = document.getElementById("user-input");
     const srsOutput = document.getElementById("srs-output");
+    const planOutput = document.getElementById("plan-output");
     const codeOutput = document.getElementById("code-output");
 
     form.addEventListener("submit", async function (event) {
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Clear previous output
         srsOutput.innerHTML = "";
+        planOutput.innerHTML = "";
         codeOutput.innerHTML = "";
 
         const formData = new FormData(form);
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const decoder = new TextDecoder();
         let currentSection = null;
         let srsBuffer = "";
+        let planBuffer = "";
         let codeBuffer = "";
 
         async function readStream() {
@@ -43,6 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     currentSection = null;
                     textChunk = textChunk.replace("[SRS_END]", "");
                 }
+                if (textChunk.includes("[PLAN_START]")) {
+                    currentSection = "plan";
+                    textChunk = textChunk.replace("[PLAN_START]", "");
+                }
+                if (textChunk.includes("[PLAN_END]")) {
+                    currentSection = null;
+                    textChunk = textChunk.replace("[PLAN_END]", "");
+                }
                 if (textChunk.includes("[CODE_START]")) {
                     currentSection = "code";
                     textChunk = textChunk.replace("[CODE_START]", "");
@@ -56,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (currentSection === "srs") {
                     srsBuffer += textChunk;
                     srsOutput.innerHTML = marked.parse(srsBuffer);
+                } else if (currentSection === "plan") {
+                    planBuffer += textChunk;
+                    planOutput.innerHTML = marked.parse(planBuffer);
                 } else if (currentSection === "code") {
                     codeBuffer += textChunk;
                     codeOutput.innerHTML = marked.parse(codeBuffer);
