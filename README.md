@@ -1,4 +1,4 @@
 # NormanAI
 
 #### WORK IN PROGRESS 🚧
-![image](https://github.com/user-attachments/assets/28e20c69-6647-43c8-8b1d-afef14dd3e0c)
+![image](https://github.com/user-attachments/assets/20b543f6-2a72-4558-8359-ffb2ca2527b7)
