@@ -12,8 +12,14 @@
     <div class="container">
         <h1>NormanAI</h1>
         <form id="srs-form">
-            <textarea id="user-input" name="user_input" placeholder="Describe your software idea..." required></textarea>
-            <button type="submit">Generate</button>
+            <input id="user-input" class="input" name="user_input" placeholder="Describe your software idea..." required>
+            
+            <button type="submit" class="button inactive">
+                <span class="label">Generate</span>
+                <div class="gradient-container">
+                    <div class="gradient"></div>
+                </div>
+            </button>
         </form>
 
         <div id="output-container" class="output">

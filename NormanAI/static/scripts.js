@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
-        
+
         // Clear previous output
         srsOutput.innerHTML = "";
         codeOutput.innerHTML = "";

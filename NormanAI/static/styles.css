@@ -5,11 +5,13 @@ body {
     font-family: 'Courier New', monospace;
     margin: 0;
     padding: 20px;
+    display: flex;
 }
 
 /* Container */
 .container {
     max-width: 800px;
+    width: 100%;
     margin: 0 auto;
     background-color: #111;
     padding: 20px;
@@ -23,64 +25,64 @@ h1, h2 {
     color: #33ff99;
 }
 
-/* Form */
+/* Form Elements Centered */
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
 }
 
-textarea {
-    background-color: #222;
+/* Input Field */
+.input {
     color: #33ff99;
-    border: 1px solid #33ff99;
-    padding: 10px;
+    border: 2px solid #33ff99;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: transparent;
+    width: 90%;
+    max-width: 600px;
     font-size: 16px;
-    height: 100px;
-    resize: none;
+    text-align: center;
+}
+
+.input:active, .input:focus {
+    box-shadow: 0 0 10px #33ff99 inset;
+    outline: none;
 }
 
 /* Submit Button */
-/* From Uiverse.io by Shoh2008 */ 
 button {
-  padding: 15px 30px;
-  font-size: 18px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  transition: 0.5s;
-  background: #1e1e1e;
   cursor: pointer;
-  color: greenyellow;
-  box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+  font-weight: 700;
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #33ff99;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
 }
 
 button:hover {
-  animation: a 0.5s 1 linear;
+  background: #2be487;
 }
 
-@keyframes a {
-  0% {
-    transform: scale(0.9, 1.1);
-  }
-
-  25% {
-    transform: scale(1.1, 0.9);
-  }
-
-  50% {
-    transform: scale(0.9, 1.1);
-  }
-
-  75% {
-    transform: scale(1.1, 0.9);
-  }
-
-  100% {
-    transform: scale(1, 1);
-  }
+button > svg {
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
 }
 
+button:hover svg {
+  transform: translateX(5px);
+}
+
+button:active {
+  transform: scale(0.95);
+}
 
 /* Output Section */
 .output {
@@ -135,23 +137,5 @@ pre {
 code {
     font-family: 'Courier New', monospace;
     color: #33ff99;
-}
-
-/* Scrollbar Customization */
-.output-box::-webkit-scrollbar {
-    width: 8px;
-}
-
-.output-box::-webkit-scrollbar-track {
-    background: #111;
-}
-
-.output-box::-webkit-scrollbar-thumb {
-    background: #33ff99;
-    border-radius: 4px;
-}
-
-.output-box::-webkit-scrollbar-thumb:hover {
-    background: #22cc88;
 }
 
