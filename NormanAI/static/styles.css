@@ -1,0 +1,157 @@
+/* Global Styles */
+body {
+    background-color: #0f0f0f;
+    color: #33ff99;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #111;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px #33ff99;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #33ff99;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+textarea {
+    background-color: #222;
+    color: #33ff99;
+    border: 1px solid #33ff99;
+    padding: 10px;
+    font-size: 16px;
+    height: 100px;
+    resize: none;
+}
+
+/* Submit Button */
+/* From Uiverse.io by Shoh2008 */ 
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  background: #1e1e1e;
+  cursor: pointer;
+  color: greenyellow;
+  box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+}
+
+button:hover {
+  animation: a 0.5s 1 linear;
+}
+
+@keyframes a {
+  0% {
+    transform: scale(0.9, 1.1);
+  }
+
+  25% {
+    transform: scale(1.1, 0.9);
+  }
+
+  50% {
+    transform: scale(0.9, 1.1);
+  }
+
+  75% {
+    transform: scale(1.1, 0.9);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
+/* Output Section */
+.output {
+    background-color: #222;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #33ff99;
+}
+
+/* Output Boxes (Fixed Height) */
+.output-box {
+    height: 200px;
+    overflow-y: auto;
+    background-color: #111;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    white-space: normal;
+    word-wrap: break-word;
+    border: 1px solid #33ff99;
+}
+
+/* Markdown Styling */
+.markdown h1, 
+.markdown h2, 
+.markdown h3 {
+    color: #33ff99;
+    margin-bottom: 10px;
+}
+
+.markdown pre {
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.markdown code {
+    color: #33ff99;
+}
+
+/* Code Block Styling */
+pre {
+    background-color: #111;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    border: 1px solid #33ff99;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    color: #33ff99;
+}
+
+/* Scrollbar Customization */
+.output-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.output-box::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.output-box::-webkit-scrollbar-thumb {
+    background: #33ff99;
+    border-radius: 4px;
+}
+
+.output-box::-webkit-scrollbar-thumb:hover {
+    background: #22cc88;
+}
+

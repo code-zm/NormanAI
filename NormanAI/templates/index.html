@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NormanAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="{{ url_for('static', filename='scripts.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>NormanAI</h1>
+        <form id="srs-form">
+            <textarea id="user-input" name="user_input" placeholder="Describe your software idea..." required></textarea>
+            <button type="submit">Generate</button>
+        </form>
+
+        <div id="output-container" class="output">
+            <h2>📜 Mini SRS</h2>
+            <div id="srs-output" class="output-box"></div>
+
+            <h2>💾 Generated Code</h2>
+            <div id="code-output" class="output-box"></div>
+        </div>
+    </div>
+</body>
+</html>
+
